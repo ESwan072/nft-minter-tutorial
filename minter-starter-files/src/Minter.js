@@ -3,24 +3,27 @@ import { useEffect, useState } from "react";
 const Minter = (props) => {
 
   //State variables
-  const [walletAddress, setWallet] = useState("");
-  const [status, setStatus] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setURL] = useState("");
+  const [walletAddress, setWallet] = useState(""); //string that stores user's wallet address
+  const [status, setStatus] = useState(""); //contains a message to display at the bottom of the UI
+  const [name, setName] = useState(""); //string Stores the NFT name
+  const [description, setDescription] = useState(""); //string stores description 
+  const [url, setURL] = useState("");// a string that is the link to the digital asset (image)
  
+  // react hook called after component is rendered, only on 1st render
+  //call our wallet listener and another wallet function to update our UI to reflect whether a wallet is already connected
   useEffect(async () => { //TODO: implement
     
   }, []);
-
+  //this function will be called to connect the user's Metamask wallet to our dApp.
   const connectWalletPressed = async () => { //TODO: implement
    
   };
-
+  //this function will be called to mint the user's NFT.
   const onMintPressed = async () => { //TODO: implement
     
   };
 
+  //ui component
   return (
     <div className="Minter">
       <button id="walletButton" onClick={connectWalletPressed}>
@@ -44,7 +47,7 @@ const Minter = (props) => {
         <input
           type="text"
           placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
-          onChange={(event) => setURL(event.target.value)}
+          onChange={(event) => setURL(event.target.value)} //when new stuff is typed in, set url to that string value 
         />
         <h2>🤔 Name: </h2>
         <input
