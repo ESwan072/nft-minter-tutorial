@@ -22,6 +22,9 @@ const Minter = (props) => {
     const {address, status} = await getCurrentWalletConnected();
     setWallet(address)
     setStatus(status); 
+
+    //wallet listener call
+    addWalletListener();
   }, []);
   //this function will be called to connect the user's Metamask wallet to our dApp.
   const connectWalletPressed = async () => { //TODO: implement (DONE?)
