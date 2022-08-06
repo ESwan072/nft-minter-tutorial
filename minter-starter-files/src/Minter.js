@@ -1,4 +1,11 @@
 import { useEffect, useState } from "react";
+import { 
+  connectWallet, 
+  getCurrentWalletConnected } from "./utils/interact";
+
+//PROBLEMS:
+//ConnectWallet might be broken, could also be a hardware issue my side - E
+
 
 const Minter = (props) => {
 
@@ -11,17 +18,47 @@ const Minter = (props) => {
  
   // react hook called after component is rendered, only on 1st render
   //call our wallet listener and another wallet function to update our UI to reflect whether a wallet is already connected
-  useEffect(async () => { //TODO: implement
-    
+  useEffect(async () => { //TODO: implement (done?) 
+    const {address, status} = await getCurrentWalletConnected();
+    setWallet(address)
+    setStatus(status); 
   }, []);
   //this function will be called to connect the user's Metamask wallet to our dApp.
-  const connectWalletPressed = async () => { //TODO: implement
-   
+  const connectWalletPressed = async () => { //TODO: implement (DONE?)
+    const walletResponse = await connectWallet(); //walletResponse takes function output
+    setStatus(walletResponse.status);
+    setWallet(walletResponse.address); //call specific attribute from 
   };
   //this function will be called to mint the user's NFT.
   const onMintPressed = async () => { //TODO: implement
     
   };
+
+  //add a wallet listener
+  function addWalletListener() {
+    if (window.ethereum) { //if metamask is installed
+      window.ethereum.on("accountsChanged", (accounts) => { //when accounts change
+        if (accounts.length > 0) {
+          setWallet(accounts[0]);
+          setStatus("👆🏽 Write a message in the text-field above.");
+        } else {
+          setWallet("");
+          setStatus("🦊 Connect to Metamask using the top right button.");
+        }
+      });
+    } else { //if metamask not installed
+      setStatus(
+        <p>
+          {" "}
+          🦊{" "}
+          <a target="_blank" href={`https://metamask.io/download.html`}>
+            You must install Metamask, a virtual Ethereum wallet, in your
+            browser.
+          </a>
+        </p>
+      );
+    }
+  }
 
   //ui component
   return (
