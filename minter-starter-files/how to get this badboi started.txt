@@ -1,0 +1,6 @@
+make sure you have npm installed
+open command prompt
+use the cd command to navigate to minter-starter-files (wherever you put it)
+cd minter-starter-files
+npm install
+npm start 
