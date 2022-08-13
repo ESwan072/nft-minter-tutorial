@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { 
   connectWallet, 
-  getCurrentWalletConnected } from "./utils/interact";
+  getCurrentWalletConnected, 
+  mintNFT } from "./utils/interact";
 
 //PROBLEMS:
 //ConnectWallet might be broken, could also be a hardware issue my side - E
@@ -33,8 +34,9 @@ const Minter = (props) => {
     setWallet(walletResponse.address); //call specific attribute from 
   };
   //this function will be called to mint the user's NFT.
-  const onMintPressed = async () => { //TODO: implement
-    
+  const onMintPressed = async () => { //TODO: implement (largely done, changes need to be made)
+    const { status } = await mintNFT(url,name,description);
+    setStatus(status);
   };
 
   //add a wallet listener
