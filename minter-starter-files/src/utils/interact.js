@@ -118,7 +118,7 @@ export const connectWallet = async () => {
     //call to pinata
     const pinataResponse = await pinJSONToIPFS(metadataObject);
     //check for errors
-    if (pinataResponse.success != true) {
+    if (!pinataResponse.success) {
       return{
         success: false, status: "Something went wrong while uploading your TokenURI",
       }
