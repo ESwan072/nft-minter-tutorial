@@ -124,6 +124,7 @@ export const connectWallet = async () => {
       }
     }
     const TokenURI = pinataResponse.pinataUrl;
+    
     //loading the smart contract
     window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
@@ -134,7 +135,7 @@ export const connectWallet = async () => {
       //needs to match the active address of the user
       from: window.ethereum.selectedAddress, 
       //make a call to the smart contract
-      'data': window.contract.methods.mintNFT(window.ethereum.selectedAddress, tokenURI).encodeABI() 
+      'data': window.contract.methods.mintNFT(window.ethereum.selectedAddress, TokenURI).encodeABI() 
     };
 
     //sign transaction via metamask
