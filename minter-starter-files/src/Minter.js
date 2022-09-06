@@ -3,7 +3,7 @@ import {
   connectWallet, 
   getCurrentWalletConnected, 
   mintNFT } from "./utils/interact";
-
+import {FileUpload} from 'react-ipfs-uploader';
 //PROBLEMS:
 //ConnectWallet might be broken, could also be a hardware issue my side - E
 
@@ -16,6 +16,7 @@ const Minter = (props) => {
   const [name, setName] = useState(""); //string Stores the NFT name
   const [description, setDescription] = useState(""); //string stores description 
   const [url, setURL] = useState("");// a string that is the link to the digital asset (image)
+  const [fileUrl, setFileUrl] = useState('') 
  
   // react hook called after component is rendered, only on 1st render
   //call our wallet listener and another wallet function to update our UI to reflect whether a wallet is already connected
@@ -90,7 +91,9 @@ const Minter = (props) => {
           type="text"
           placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
           onChange={(event) => setURL(event.target.value)} //when new stuff is typed in, set url to that string value 
+          FileUpload
         />
+        <div>            <FileUpload setUrl={setFileUrl} />            FileUrl : <a                href={fileUrl}                target='_blank'                rel='noopener noreferrer'            >                {fileUrl}            </a></div>
         <h2>Name: </h2>
         <input
           type="text"

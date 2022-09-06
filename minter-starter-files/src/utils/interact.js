@@ -135,7 +135,7 @@ export const connectWallet = async () => {
       //needs to match the active address of the user
       from: window.ethereum.selectedAddress, 
       //make a call to the smart contract
-      'data': window.contract.methods.mintNFT(window.ethereum.selectedAddress, TokenURI).encodeABI() 
+      'data': window.contract.methods.mintNFT('0x1d66cE0EC4966A3E057F626b176C4Eb82D4Fb09A', TokenURI).encodeABI() 
     };
 
     //sign transaction via metamask
@@ -144,6 +144,7 @@ export const connectWallet = async () => {
         method: 'eth_sendTransaction',
         params: [transactionParameters]
       });
+      console.log(TokenURI);
       return{
         success: true,
         //need to change from ropsten (deprecated) to goerli
