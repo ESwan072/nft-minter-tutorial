@@ -4,6 +4,7 @@ import {
   getCurrentWalletConnected, 
   mintNFT } from "./utils/interact";
 import {FileUpload} from 'react-ipfs-uploader';
+import UploadComp from "./utils/cheekyUploadComponent";
 //PROBLEMS:
 //ConnectWallet might be broken, could also be a hardware issue my side - E
 
@@ -69,7 +70,7 @@ const Minter = (props) => {
   //ui component
   return (
     <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
+       <button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
@@ -87,13 +88,7 @@ const Minter = (props) => {
       </p>
       <form>
         <h2>Link to asset: (This will need to change) </h2>
-        <input
-          type="text"
-          placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
-          onChange={(event) => setURL(event.target.value)} //when new stuff is typed in, set url to that string value 
-          FileUpload
-        />
-        <div>            <FileUpload setUrl={setFileUrl} />            FileUrl : <a                href={fileUrl}                target='_blank'                rel='noopener noreferrer'            >                {fileUrl}            </a></div>
+        <UploadComp></UploadComp>
         <h2>Name: </h2>
         <input
           type="text"
@@ -113,6 +108,7 @@ const Minter = (props) => {
       <p id="status">
         {status}
       </p>
+      
     </div>
   );
 };
