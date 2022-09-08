@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { 
   connectWallet, 
   getCurrentWalletConnected, 
-  mintNFT } from "./utils/interact";
+  mintNFT } from "../utils/interact";
 import {FileUpload} from 'react-ipfs-uploader';
-import UploadComp from "./utils/cheekyUploadComponent";
+import UploadComp from "./UploadComponent";
 //PROBLEMS:
 //ConnectWallet might be broken, could also be a hardware issue my side - E
 
@@ -80,14 +80,16 @@ const Minter = (props) => {
           <span>Connect Wallet</span>
         )}
       </button>
-
       <br></br>
       <h1 id="title">NFT Minter</h1>
       <p>
         Simply add your asset's link, name, and description, then press "Mint."
       </p>
-      <form>
-        <h2>Link to asset: (This will need to change) </h2>
+      <p id="status">
+        {status}
+      </p>
+      {/* <form>
+        <h2>Asset Upload</h2>
         <UploadComp></UploadComp>
         <h2>Name: </h2>
         <input
@@ -101,14 +103,10 @@ const Minter = (props) => {
           placeholder="e.g. Even cooler than cryptokitties ;)"
           onChange={(event) => setDescription(event.target.value)}
         />
-      </form>
+      </form> */}
       <button id="mintButton" onClick={onMintPressed}>
         Mint NFT
       </button>
-      <p id="status">
-        {status}
-      </p>
-      
     </div>
   );
 };

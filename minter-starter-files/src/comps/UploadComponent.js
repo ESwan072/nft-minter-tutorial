@@ -3,7 +3,7 @@ import FormData from 'form-data';
 import axios from 'axios';
 
 
-function UploadComp() {
+function UploadComp(props) {
 
   const [file, setFile] = useState()
   const [myipfsHash, setIPFSHASH] = useState('')
@@ -16,8 +16,8 @@ function UploadComp() {
         formData.append("file", fileToHandle)
         // call the keys from .env
         //issue calling data from .env
-        const API_KEY = '8217ce55e5b493cd1a12' //process.env.REACT_APP_API_KEY
-        const API_SECRET = 'f508c142723acf68dde5b044416d62b093fe9394fae891d4dac2f60a60a0a5d8' //process.env.REACT_APP_API_SECRET
+        const API_KEY =    process.env.REACT_APP_PINATA_KEY      //'8217ce55e5b493cd1a12' 
+        const API_SECRET = process.env.REACT_APP_PINATA_SECRET   //'f508c142723acf68dde5b044416d62b093fe9394fae891d4dac2f60a60a0a5d8' 
         // the endpoint needed to upload the file
         const url =  `https://api.pinata.cloud/pinning/pinFileToIPFS`
         const response = await axios.post(
