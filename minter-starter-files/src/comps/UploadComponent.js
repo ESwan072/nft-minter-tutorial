@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import FormData from 'form-data';
 import axios from 'axios';
+import "./comps.css"
 
 
-function UploadComp(props) {
+function UploadComp({takeImageUrl}) {
 
   const [file, setFile] = useState()
   const [myipfsHash, setIPFSHASH] = useState('')
-  const [IMGurl, setURL] = useState("");// a string that is the link to the digital asset (image)
+  const [imgURL, setURL] = useState("");// a string that is the link to the digital asset (image)
   const handleFile=async (fileToHandle) =>
     {
         console.log('starting')
@@ -38,7 +39,10 @@ function UploadComp(props) {
         console.log(myipfsHash)
         // get the hash
         setIPFSHASH(response.data.IpfsHash)
-        setURL("https://gateway.pinata.cloud/ipfs/"+{myipfsHash})
+        let a = "https://gateway.pinata.cloud/ipfs/";
+        let thissolutionisdumb = a.concat(myipfsHash);
+        setURL(thissolutionisdumb);
+        takeImageUrl(imgURL)
     }
   return (
     <div className="CompUploader">
@@ -50,7 +54,7 @@ function UploadComp(props) {
       myipfsHash.length > 0 && <img height='200' src={`https://gateway.pinata.cloud/ipfs/${myipfsHash}`} alt='not loading'/>
     }
     <br></br>
-    <a href={IMGurl}>Link to your Asset</a>
+    <a href= {imgURL}>Link to your Asset</a>
     </div>
   );
 }
