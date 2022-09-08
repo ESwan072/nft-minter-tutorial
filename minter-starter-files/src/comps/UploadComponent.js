@@ -7,6 +7,7 @@ function UploadComp(props) {
 
   const [file, setFile] = useState()
   const [myipfsHash, setIPFSHASH] = useState('')
+  const [IMGurl, setURL] = useState("");// a string that is the link to the digital asset (image)
   const handleFile=async (fileToHandle) =>
     {
         console.log('starting')
@@ -37,7 +38,7 @@ function UploadComp(props) {
         console.log(myipfsHash)
         // get the hash
         setIPFSHASH(response.data.IpfsHash)
-        //const assetLink = "https://gateway.pinata.cloud/ipfs/"+myipfsHash;
+        setURL("https://gateway.pinata.cloud/ipfs/"+{myipfsHash})
     }
   return (
     <div className="CompUploader">
@@ -49,7 +50,7 @@ function UploadComp(props) {
       myipfsHash.length > 0 && <img height='200' src={`https://gateway.pinata.cloud/ipfs/${myipfsHash}`} alt='not loading'/>
     }
     <br></br>
-    <a href='https://gateway.pinata.cloud/ipfs/${myipfsHash}'>Link to your Asset</a>
+    <a href={IMGurl}>Link to your Asset</a>
     </div>
   );
 }

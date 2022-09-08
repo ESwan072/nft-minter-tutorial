@@ -5,6 +5,8 @@ const NameDescrip = (props) => {
     const [name, setName] = useState(""); //string Stores the NFT name
     const [description, setDescription] = useState(""); //string stores description 
 
+    
+
     return(
         <div className="NameDescrip">
             <h2>Name: </h2>

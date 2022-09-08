@@ -2,10 +2,12 @@ import './App.css';
 import Minter from './comps/MinterButton'
 import UploadComp from './comps/UploadComponent';
 import NameDescrip from './comps/NameDescrip';
+import ConnWall from './comps/ConnectWallet';
+
 
 //this is the main component (acts as a container for all other components)
 function App() {
-  state = 
+  const state = 
       {
         nftName:"",
         nftDescription:"",
@@ -13,11 +15,22 @@ function App() {
       }
 
 
+      //order
+      //connect
+      //heading
+      //uploader
+      //name & description
+      //mint
   return ( //all components injected below and some visuals (like status) are handled below
     <div className="App">
-      {/*<Minter></Minter>*/}
-      {/*<UploadComp></UploadComp>*/}
-      {/*<NameDescrip></NameDescrip>*/}
+      <div className="AppBody">
+      <ConnWall></ConnWall>
+      <br></br>
+      <h1> heading </h1>
+      <UploadComp></UploadComp>
+      <NameDescrip></NameDescrip>
+      <Minter></Minter>
+      </div>
     </div>
   );
 }

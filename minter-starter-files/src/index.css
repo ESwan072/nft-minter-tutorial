@@ -51,6 +51,7 @@ button {
   text-align: center;
   font-weight: bold;
   cursor:pointer;
+  min-height: 20px;
 }
 
 #title {
