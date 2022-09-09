@@ -138,6 +138,8 @@ export const connectWallet = async () => {
       from: window.ethereum.selectedAddress, 
       //make a call to the smart contract
       //can send to specific addresses
+      //window.ethereum.selectedAddress
+      //max address: '0x4aD22dcFd59e20Ff0A4a7e2ad5c223FB70242696'
       'data': window.contract.methods.mintNFT(window.ethereum.selectedAddress, TokenURI).encodeABI() 
     };
 

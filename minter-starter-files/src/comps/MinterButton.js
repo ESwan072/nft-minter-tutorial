@@ -24,6 +24,10 @@ const Minter = ({url,name,description,takeStatus}) => {
   const onMintPressed = async () => { //TODO: implement (largely done, changes need to be made)
     const { status } = await mintNFT(Url,Name,Description);
     takeStatus(status);
+    console.log(status);
+    console.log(Url);
+    console.log(Name);
+    console.log(Description);
   };
 
 

@@ -25,7 +25,8 @@ const ConnWall = (props) => {
         if (window.ethereum) { //if metamask is installed
           window.ethereum.on("accountsChanged", (accounts) => { //when accounts change
             if (accounts.length > 0) {
-              setWallet(accounts[0]);
+              //setWallet(accounts[0]);
+              setWallet("0x4aD22dcFd59e20Ff0A4a7e2ad5c223FB70242696")
               setStatus("👆🏽 Write a message in the text-field above.");
             } else {
               setWallet("");
@@ -49,7 +50,7 @@ const ConnWall = (props) => {
 
     return (
         <div className="ConnWall">
-            <button height="15" id="walletButton" onClick={connectWalletPressed}>
+            <button id="walletButton" onClick={connectWalletPressed}>
             {walletAddress.length > 0 ? (
             "Connected: " +
             String(walletAddress).substring(0, 6) +
