@@ -4,6 +4,9 @@ import axios from 'axios';
 import "./comps.css"
 
 
+//Current problems: 
+//Need a loading state to allow link generation
+//might need to buy an IPFS Gateway permission
 function UploadComp({takeImageUrl}) {
 
   const [file, setFile] = useState()
@@ -54,7 +57,7 @@ function UploadComp({takeImageUrl}) {
       myipfsHash.length > 0 && <img height='200' src={`https://gateway.pinata.cloud/ipfs/${myipfsHash}`} alt='not loading'/>
     }
     <br></br>
-    <a href= {imgURL}>Link to your Asset</a>
+    <a href= {imgURL} target = "_blank">Link to your Asset</a>
     </div>
   );
 }

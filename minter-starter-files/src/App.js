@@ -14,6 +14,8 @@ function App() {
     const [NftDescription, setNftDescription] = useState('');
     //to interact with uploader
     const [assetURL,setUrl] = useState('');
+    //result of the minting press and some other functions
+    const [Status,setStatus] = useState('');
 
     //pulling data from NameDescrip (seems to work)
     const takeName = (name) => {
@@ -29,6 +31,12 @@ function App() {
     const takeImageUrl = (imgURL) => {
       setUrl(imgURL);
       console.log(assetURL);
+    }
+
+    //getting the status from the minting button
+    const takeStatus = (status) =>{
+        setStatus(status);
+        console.log(Status)
     }
 
       //The order of children
@@ -49,7 +57,8 @@ function App() {
         {/*child 3*/}
         <NameDescrip takeName={takeName} takeDescrip={takeDescrip}/>
         {/*child 4*/}
-        <Minter />
+        <Minter url = {assetURL} name = {nftName} description = {NftDescription} takeStatus={takeStatus} />
+        {Status}
       </div>
     </div>
   );
